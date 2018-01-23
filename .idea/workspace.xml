@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81ec0ae4-c3e0-4dd0-97ae-73828a051f12" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Design/ClassDiagrams/BookList.docx" afterPath="$PROJECT_DIR$/Design/ClassDiagrams/BookList.docx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Requirements/Use Cases/1. Use Case Add a new User.docx" afterPath="$PROJECT_DIR$/Requirements/Use Cases/1. Use Case Add a new User.docx" />
-    </list>
+    <list default="true" id="81ec0ae4-c3e0-4dd0-97ae-73828a051f12" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -394,7 +391,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="812" extended-state="1" />
+    <frame x="0" y="23" width="1440" height="812" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
