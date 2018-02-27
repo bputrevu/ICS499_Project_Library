@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81ec0ae4-c3e0-4dd0-97ae-73828a051f12" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Design/ClassDiagrams/Book.docx" afterPath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/Book.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Design/ClassDiagrams/BookList.docx" afterPath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/BookList.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Design/ClassDiagrams/Hold.docx" afterPath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/Hold.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Design/ClassDiagrams/Library.docx" afterPath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/Library.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Design/ClassDiagrams/User.docx" afterPath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/User.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Design/ClassDiagrams/UserList.docx" afterPath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/UserList.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Design/DBTables/TableDesign.xlsx" afterPath="$PROJECT_DIR$/DOCS/Design/DBTables/TableDesign.xlsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Design/User Interface.docx" afterPath="$PROJECT_DIR$/DOCS/Design/User Interface.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Requirements/Requirements.docx" afterPath="$PROJECT_DIR$/DOCS/Requirements/Requirements.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Requirements/Use Cases/1. Use Case Add a new User.docx" afterPath="$PROJECT_DIR$/DOCS/Requirements/Use Cases/1. Use Case Add a new User.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Requirements/Use Cases/2. Use Case Add a New Book.docx" afterPath="$PROJECT_DIR$/DOCS/Requirements/Use Cases/2. Use Case Add a New Book.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Requirements/Use Cases/3. Use Case Return Book.docx" afterPath="$PROJECT_DIR$/DOCS/Requirements/Use Cases/3. Use Case Return Book.docx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Requirements/Use Cases/4. Use Case Remove Book.docx" afterPath="$PROJECT_DIR$/DOCS/Requirements/Use Cases/4. Use Case Remove Book.docx" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROD/BOOK.data" afterPath="$PROJECT_DIR$/DOCS/PROD/BOOK.data" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROD/HOURS.data" afterPath="$PROJECT_DIR$/DOCS/PROD/HOURS.data" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROD/LIBRARIES.data" afterPath="$PROJECT_DIR$/DOCS/PROD/LIBRARIES.data" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROD/MariaDB PROD Tables.txt" afterPath="$PROJECT_DIR$/DOCS/PROD/MariaDB PROD Tables.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PROD/USERS.data" afterPath="$PROJECT_DIR$/DOCS/PROD/USERS.data" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,7 +42,7 @@
         </entry>
       </file>
       <file leaf-file-name="BOOK.data" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PROD/BOOK.data">
+        <entry file="file://$PROJECT_DIR$/DOCS/PROD/BOOK.data">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -60,7 +52,7 @@
         </entry>
       </file>
       <file leaf-file-name="HOURS.data" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PROD/HOURS.data">
+        <entry file="file://$PROJECT_DIR$/DOCS/PROD/HOURS.data">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -70,7 +62,7 @@
         </entry>
       </file>
       <file leaf-file-name="LIBRARIES.data" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PROD/LIBRARIES.data">
+        <entry file="file://$PROJECT_DIR$/DOCS/PROD/LIBRARIES.data">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -80,7 +72,7 @@
         </entry>
       </file>
       <file leaf-file-name="MariaDB PROD Tables.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PROD/MariaDB PROD Tables.txt">
+        <entry file="file://$PROJECT_DIR$/DOCS/PROD/MariaDB PROD Tables.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -90,7 +82,7 @@
         </entry>
       </file>
       <file leaf-file-name="USERS.data" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PROD/USERS.data">
+        <entry file="file://$PROJECT_DIR$/DOCS/PROD/USERS.data">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -143,7 +135,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="824" />
+    <option name="height" value="823" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -172,20 +164,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ICS499_Project_Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ICS499_Project_Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DOCS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -483,7 +461,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="824" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="823" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -634,7 +612,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PROD/BOOK.data">
+    <entry file="file://$PROJECT_DIR$/DOCS/PROD/BOOK.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -642,7 +620,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PROD/HOURS.data">
+    <entry file="file://$PROJECT_DIR$/DOCS/PROD/HOURS.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -650,7 +628,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PROD/LIBRARIES.data">
+    <entry file="file://$PROJECT_DIR$/DOCS/PROD/LIBRARIES.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -658,7 +636,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PROD/MariaDB PROD Tables.txt">
+    <entry file="file://$PROJECT_DIR$/DOCS/PROD/MariaDB PROD Tables.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -666,7 +644,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PROD/USERS.data">
+    <entry file="file://$PROJECT_DIR$/DOCS/PROD/USERS.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
