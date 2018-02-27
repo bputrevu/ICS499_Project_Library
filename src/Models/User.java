@@ -1,3 +1,7 @@
+package Models;
+
+import Models.Book;
+
 import java.util.List;
 
 /**
@@ -52,7 +56,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Models.User{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
