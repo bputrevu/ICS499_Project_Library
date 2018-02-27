@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81ec0ae4-c3e0-4dd0-97ae-73828a051f12" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/PROD/BOOK.data" afterPath="$PROJECT_DIR$/DOCS/PROD/BOOK.data" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/PROD/HOURS.data" afterPath="$PROJECT_DIR$/DOCS/PROD/HOURS.data" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/PROD/LIBRARIES.data" afterPath="$PROJECT_DIR$/DOCS/PROD/LIBRARIES.data" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/PROD/MariaDB PROD Tables.txt" afterPath="$PROJECT_DIR$/DOCS/PROD/MariaDB PROD Tables.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/PROD/USERS.data" afterPath="$PROJECT_DIR$/DOCS/PROD/USERS.data" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/Book.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/BookList.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/Hold.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/Library.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/User.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Design/ClassDiagrams/UserList.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Design/DBTables/TableDesign.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Design/User Interface.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Requirements/Requirements.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Requirements/Use Cases/1. Use Case Add a new User.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Requirements/Use Cases/2. Use Case Add a New Book.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Requirements/Use Cases/3. Use Case Return Book.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DOCS/Requirements/Use Cases/4. Use Case Remove Book.docx" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -94,8 +103,8 @@
       <file leaf-file-name="GridBagExample.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/POC/GridBagExample.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="585">
+              <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,6 +173,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ICS499_Project_Library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ICS499_Project_Library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DOCS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ICS499_Project_Library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DOCS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Requirements" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -461,7 +502,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="823" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="823" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -654,8 +695,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/POC/GridBagExample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="585">
+          <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
