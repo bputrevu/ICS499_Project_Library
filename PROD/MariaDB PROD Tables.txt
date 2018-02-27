@@ -1,0 +1,56 @@
+//Create tables
+create table BOOK
+(ISBN_ID varchar(25) NOT NULL,
+TITLE varchar(100) NOT NULL,
+AUTHOR varchar(50) NOT NULL,
+LIBRARY_ID varchar(15) NOT NULL,
+BORROWED_USER_ID varchar(25) NULL,
+DUE_DATE DATE NULL);
+
+create table USER
+(USER_ID varchar(25) NOT NULL,
+CARD_ID varchar(25) NOT NULL,
+LAST_NAME varchar(50) NOT NULL,
+FIRST_NAME varchar(50) NOT NULL,
+ADDRESS varchar(50) NULL,
+PHONE varchar(15) NOT NULL);
+
+create table HOLD
+(BOOK_ID varchar(25) NOT NULL,
+USER_ID varchar(25) NOT NULL,
+DATE DATE NOT NULL);
+
+create table LIBRARY
+(ID varchar(25) NOT NULL,
+LIBRARY_ID varchar(15) NOT NULL,
+LIBRARY_NAME varchar(50) NOT NULL,
+LIBRARY_ADDRESS varchar(100) NOT NULL,
+LIBRARY_PHONE varchar(25) NULL);
+
+create table HOURS
+(LIBRARY_ID varchar(15) NOT NULL,
+DAY varchar(10) NOT NULL,
+OPEN_HOUR varchar(20) NOT NULL,
+CLOSED_HOUR varchar(20) NULL);
+
+create table HOLIDAY
+(HOLIDAY_ID varchar(15) NOT NULL,
+LIBRARY_ID varchar(15) NOT NULL,
+HOLIDAY_NAME varchar(50) NOT NULL,
+DATE DATE NOT NULL,
+STATUS varchar(200) NOT NULL);
+
+//Populate tables
+insert into HOLIDAY(HOLIDAY_ID, LIBRARY_ID, HOLIDAY_NAME, DATE, STATUS) values ('1', '100', ' New Years Day ', '2018-1-1', ' Closed');
+insert into HOLIDAY(HOLIDAY_ID, LIBRARY_ID, HOLIDAY_NAME, DATE, STATUS) values ('2', '100', ' Martin Luther King, Jr. ', '2018-1-15', ' Closed');
+insert into HOLIDAY(HOLIDAY_ID, LIBRARY_ID, HOLIDAY_NAME, DATE, STATUS) values ('3', '100', ' Easter ', '2018-5-1', ' Closed');
+insert into HOLIDAY(HOLIDAY_ID, LIBRARY_ID, HOLIDAY_NAME, DATE, STATUS) values ('4', '100', ' Memorial Day ', '2018-6-28', ' Closed');
+
+LOAD DATA LOCAL INFILE '/home/dskayer1/PROJECT/TEST/java/PROD/HOURS.data' INTO TABLE HOURS;
+LOAD DATA LOCAL INFILE '/home/dskayer1/PROJECT/TEST/java/PROD/USERS.data' INTO TABLE USER;
+LOAD DATA LOCAL INFILE '/home/dskayer1/PROJECT/TEST/java/PROD/LIBRARIES.data' INTO TABLE LIBRARY;
+LOAD DATA LOCAL INFILE '/home/dskayer1/PROJECT/TEST/java/PROD/BOOK.data' INTO TABLE BOOK;
+
+
+
+
