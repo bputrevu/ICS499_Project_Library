@@ -1,7 +1,8 @@
+package Models;
+
 import com.sun.tools.javac.util.List;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Created by Home on 1/22/18.
@@ -65,7 +66,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "Models.Book{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
