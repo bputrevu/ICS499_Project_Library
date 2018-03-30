@@ -1,6 +1,20 @@
-//package UI;
-// 3-17,18-2018 - add MariaDB tables to menue - problems with display.
-//
+/**
+  * LibraryMenu.java
+  * This class is the UI to the Metro Library application. All user and administrator functions are initiated
+  * from this menu.
+  * <p>
+  * No parameters are sent to this class.
+  * All menu functions open separate JOptionPane boxes for dialog input or display output.
+  *
+  * @param None accepted.
+  * @return Functional dialog box.
+  * @see Library System User Guide
+  */
+
+
+ /*
+  * Last update: 3-30-2018
+  */
 
 import java.awt.*;
 import javax.swing.*;
@@ -15,7 +29,7 @@ import javax.swing.JOptionPane;
 public class LibraryMenu implements Runnable, ActionListener
 {
     JMenu libraryMenu, adminMenu, memberMenu;
-    JMenuItem addUser, addBook, displayBooksTable, displayHOURSTable, displayUserTable, searchCatalogue, checkOutBook, returnBook;
+    JMenuItem addUser, addBook, displayBooksTable, displayHOURSTable, displayUserTable, searchCatalogue, checkOutBook, returnBook, displayUserDoc;
     JPanel panel;
     JScrollPane tableContainer;
     JTable table, hoursTable;
@@ -30,17 +44,18 @@ public class LibraryMenu implements Runnable, ActionListener
         adminMenu = new JMenu("Admin Functions");
         memberMenu = new JMenu("Models.User Functions");
 
-        JMenuItem addUser =new JMenuItem("Add new user");
+        JMenuItem addUser =new JMenuItem("Add new user *");
         JMenuItem addBook = new JMenuItem("Add a book");
-        JMenuItem displayBooksTable = new JMenuItem("Display BOOKS table");
-        JMenuItem displayHOURSTable = new JMenuItem("Display HOURS table");
-        JMenuItem displayUserTable = new JMenuItem("Display USER table");
+        JMenuItem displayBooksTable = new JMenuItem("Display BOOKS table *");
+        JMenuItem displayHOURSTable = new JMenuItem("Display HOURS table *");
+        JMenuItem displayUserTable = new JMenuItem("Display USER table *");
 
         JMenuItem login = new JMenuItem("Login");
-        JMenuItem searchCatalogue = new JMenuItem("Search Catalog");
+        JMenuItem searchCatalogue = new JMenuItem("Search Catalog *");
         JMenuItem checkOutBook = new JMenuItem("Check out a book");
         JMenuItem returnBook = new JMenuItem("Return a book");
         JMenuItem hold = new JMenuItem("Place a Hold");
+        JMenuItem displayUserDoc = new JMenuItem("Documentation *");
 
         adminMenu.add(addUser);
         adminMenu.add(addBook);
@@ -53,6 +68,7 @@ public class LibraryMenu implements Runnable, ActionListener
         memberMenu.add(checkOutBook);
         memberMenu.add(returnBook);
         memberMenu.add(hold);
+        memberMenu.add(displayUserDoc);
 
         event_displayBooksTable e1 = new event_displayBooksTable();
         displayBooksTable.addActionListener(e1);
@@ -69,6 +85,8 @@ public class LibraryMenu implements Runnable, ActionListener
         event_searchCatalogue e5 = new event_searchCatalogue();
         searchCatalogue.addActionListener(e5);
 
+        event_displayUserDoc e6 = new event_displayUserDoc();
+        displayUserDoc.addActionListener(e6);
 
 
         panel = new JPanel(); //me
@@ -85,6 +103,7 @@ public class LibraryMenu implements Runnable, ActionListener
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setTitle("Metro Library");
+        //f.setBackground(Color.yellow);
         //f.setLocationRelativeTo(null);
     }
     public static void main(String args[])
@@ -104,8 +123,6 @@ public class LibraryMenu implements Runnable, ActionListener
            //JOptionPane.showMessageDialog(null, "event_displayBooksTable ");
 
         puListBooks puList = new puListBooks();
-
-
         }
     }
 
@@ -124,7 +141,6 @@ public class LibraryMenu implements Runnable, ActionListener
            //JOptionPane.showMessageDialog(null, "event_displayUserTable ");
 
         puListUser puList = new puListUser();
-
         }
     }
 
@@ -142,10 +158,15 @@ public class LibraryMenu implements Runnable, ActionListener
         public void actionPerformed(ActionEvent e5) {
            System.out.println("event_searchCatalogue");
        puSearchBook puSearch = new puSearchBook();
-
         }
     }
 
+    public class event_displayUserDoc implements ActionListener {
+        public void actionPerformed(ActionEvent e6) {
+           System.out.println("displayUserDoc");
+       puDocumentation puDoc = new puDocumentation();
+        }
+    }
 
     @Override
     public void run() {

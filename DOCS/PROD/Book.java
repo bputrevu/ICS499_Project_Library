@@ -1,6 +1,8 @@
 /*
- * User: Lists the BOOK table in Mariadb.
+ * Book: Lists the BOOK table in Mariadb.
+ * Last updated: 3-30-2018
  */
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,7 +14,7 @@ public class Book {
   private ResultSet rs = null;
   private Connection conn = null;
   private Statement stmt = null;
-  Object[][] data = new Object[20][6];
+  Object[][] data = new Object[100][6];
   int row=0;
   int col=0;
   int colmax=6;
@@ -24,6 +26,7 @@ public class Book {
                 String connectionPassword = "password";
                 conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
                 stmt = conn.createStatement();
+                //rs = stmt.executeQuery("SELECT TITLE,AUTHOR FROM BOOK");
                 rs = stmt.executeQuery("SELECT * FROM BOOK");
                 while (rs.next()) {
                 String ISBN_ID = rs.getString("ISBN_ID");
