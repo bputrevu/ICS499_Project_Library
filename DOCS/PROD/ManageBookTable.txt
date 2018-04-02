@@ -1,0 +1,10 @@
+create table ManageBook
+(ISBN_ID varchar(25) NOT NULL,
+TITLE varchar(100) NOT NULL,
+AUTHOR varchar(50) NOT NULL,
+BORROWED_USER_ID varchar(25) NULL,
+STATUS varchar(15) NOT NULL,
+DUE_DATE DATE NULL);
+
+
+insert into ManageBook(ISBN_ID, TITLE, AUTHOR, BORROWED_USER_ID, STATUS, DUE_DATE) values ('1580493998', 'Pygmalion', ' George Bernard Shaw ', 'user01', 'OUT', '2018-4-28');

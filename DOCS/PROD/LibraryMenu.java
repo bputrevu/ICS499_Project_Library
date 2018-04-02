@@ -13,7 +13,7 @@
 
 
  /*
-  * Last update: 3-30-2018
+  * Last update: 4-2-2018
   */
 
 import java.awt.*;
@@ -42,7 +42,7 @@ public class LibraryMenu implements Runnable, ActionListener
 
         libraryMenu = new JMenu("Menu");
         adminMenu = new JMenu("Admin Functions");
-        memberMenu = new JMenu("Models.User Functions");
+        memberMenu = new JMenu("My Metro Library");
 
         JMenuItem addUser =new JMenuItem("Add new user *");
         JMenuItem addBook = new JMenuItem("Add a book");
@@ -50,7 +50,7 @@ public class LibraryMenu implements Runnable, ActionListener
         JMenuItem displayHOURSTable = new JMenuItem("Display HOURS table *");
         JMenuItem displayUserTable = new JMenuItem("Display USER table *");
 
-        JMenuItem login = new JMenuItem("Login");
+        //JMenuItem login = new JMenuItem("Login");
         JMenuItem searchCatalogue = new JMenuItem("Search Catalog *");
         JMenuItem checkOutBook = new JMenuItem("Check out a book");
         JMenuItem returnBook = new JMenuItem("Return a book");
@@ -63,7 +63,7 @@ public class LibraryMenu implements Runnable, ActionListener
         adminMenu.add(displayHOURSTable);
         adminMenu.add(displayUserTable);
 
-        memberMenu.add(login);
+        //memberMenu.add(login);
         memberMenu.add(searchCatalogue);
         memberMenu.add(checkOutBook);
         memberMenu.add(returnBook);
@@ -88,6 +88,8 @@ public class LibraryMenu implements Runnable, ActionListener
         event_displayUserDoc e6 = new event_displayUserDoc();
         displayUserDoc.addActionListener(e6);
 
+        event_checkOutBook e7 = new event_checkOutBook();
+        checkOutBook.addActionListener(e7);
 
         panel = new JPanel(); //me
 
@@ -167,6 +169,14 @@ public class LibraryMenu implements Runnable, ActionListener
        puDocumentation puDoc = new puDocumentation();
         }
     }
+
+    public class event_checkOutBook implements ActionListener {
+        public void actionPerformed(ActionEvent e7) {
+           System.out.println("checkOutBook");
+       puCheckBook checkBook = new puCheckBook();
+        }
+    }
+
 
     @Override
     public void run() {
