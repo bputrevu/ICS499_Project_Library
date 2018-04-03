@@ -1,7 +1,7 @@
 /*
  * puCheckResults.java - Uses a dialog box to display check-in/check-out results
  * with the MariaDB ManageBook table.
- * 4-2-2018
+ * 4-3-2018
  */
 
  import javax.swing.JOptionPane;
@@ -64,10 +64,7 @@
         // Check database for entry in the ManageBook table
 
         sql = "select * from ManageBook where TITLE LIKE(?)";
-        //sql = "select count(1) from ManageBook where TITLE LIKE(?)";
-        //sql = "select 1 from ManageBook where TITLE LIKE(?)";
         forSql = "%" + searchString + "%";
-//      select count(1) from ManageBook where TITLE = 'Pygmalion';
         try {
           Class.forName("org.mariadb.jdbc.Driver").newInstance();
           String connectionUrl = "jdbc:mysql://localhost:3306/prod";
@@ -82,23 +79,15 @@
           if (rs.next()) {
           // If rs.next() returns a result, it indicates a row has been matched
           // in SQL table ManageBook. This means the book is checked out.
-              //numberOfRows = rs.getInt(1);
               System.out.printf("%s is checked out. \n", searchString);
               bookStatus = "OUT";
-
           } else {
               System.out.printf("%s is NOT! checked out. \n", searchString);
               bookStatus = "IN";
           }
-
         } catch (Exception e) {
         e.printStackTrace();
         }
-        //finally {
-        //try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
-        //try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-        //try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
-       // }
 
 
      // Checking the book status again at this point is just a way to continue the book manage
@@ -128,23 +117,10 @@
               System.out.printf("TITLE is: %s . \n", TITLE);
               System.out.printf("AUTHOR is: %s . \n", AUTHOR);
               System.out.printf("User ID is: %s \n",  userAcct);
-
                 }
-
         } catch (Exception e) {
         e.printStackTrace();
         }
-        //finally {
-        //try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
-        //try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-        //try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
-       // }
-
-
-              //System.out.printf("ISBN_ID is: %s . \n", ISBN_ID);
-              //System.out.printf("TITLE is: %s . \n", TITLE);
-              //System.out.printf("AUTHOR is: %s . \n", AUTHOR);
-              //System.out.printf("User ID is: %s \n",  userAcct);
 
         // Next update the ManageBook table with the book checkout information
         DUE_DATE = "2018-4-29";
@@ -172,66 +148,32 @@ try {
       String connectionPassword = "password";
       conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
 
+      System.out.println("Try SQL update:");
+      stmt1 = conn.createStatement();
+      SQL = "insert into ManageBook(ISBN_ID, TITLE, AUTHOR, BORROWED_USER_ID, STATUS, DUE_DATE) values ('"+ISBN_ID+"', '"+TITLE+"', '"+AUTHOR+"', '"+userAcct+"', '"+STATUS+"','"+DUE_DATE+"')";
 
-      //stmt = conn.prepareStatement(sql); //works
-      //stmt.setString(1, sqlISBN_ID);
-      //stmt.setString(2, sqlTITLE);
-      //stmt.setString(3, sqlAUTHOR);
-      //stmt.setString(4, sqlBORROWED_USER_ID);
-      //stmt.setString(5, sqlSTATUS);
-      //stmt.setString(6, sqlDUE_DATE);
-      //stmt.executeUpdate(sql);
+      stmt1.executeUpdate(SQL);
+      System.out.println("Row inserted.... ");
 
-stmt1 = conn.createStatement();
-SQL = "insert into ManageBook(ISBN_ID, TITLE, AUTHOR, BORROWED_USER_ID, STATUS, DUE_DATE) values ('"+ISBN_ID+"', '"+TITLE+"', '"+AUTHOR+"', '"+userAcct+"', '"+STATUS+"','"+DUE_DATE+"')";
+        // Finally return the results of the checkout status in a dialog box.
+        JOptionPane.showMessageDialog(null, "Checkout completed successfully. \nTitle : " +  TITLE + "\nAuthor : " + AUTHOR + "\nAcoount : " + userAcct + "\nDue : " + DUE_DATE );
 
-stmt1.executeUpdate(SQL);
-System.out.println("Tried update:");
-
-
-
-      //conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
-      //stmt = conn.createStatement();
-      //String SQL = "insert into ManageBook(ISBN_ID, TITLE, AUTHOR, BORROWED_USER_ID, STATUS, DUE_DATE) values ('"+ISBN_ID+"', '"+TITLE+"', '"+AUTHOR+"', '"+userAcct+"', '"+STATUS+"','"+DUE_DATE+"')";
-      //stmt.executeUpdate(SQL);
-      System.out.println("Trying to insert row.");
       } catch (Exception e) {
               e.printStackTrace();
       }
       finally {
               try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
               try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+              try { if (stmt1 != null) stmt1.close(); } catch (SQLException e) { e.printStackTrace(); }
               try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
       }
-
-
         // Finally return the results of the checkout status in a dialog box.
-        //
+        //JOptionPane.showMessageDialog(null, "Checkout completed successfully. \nTitle : " +  TITLE + "\nAuthor : " + AUTHOR + "\nAcoount : " + userAcct + "\nDue : " + DUE_DATE );
 
-
-
+        // The book is checked out.Return that information and relaunch the checkout dialog box.
         } else {
           System.out.printf("The book is not available. \n");
-        // The book is OUT. Return that information and relaunch the checkout dialog box.
         JOptionPane.showMessageDialog(null, "The book you selected is not avaiable for check out. Please make another selection.");
-        //    puRetrypuCheckResults retry = new puRetrypuCheckResults();
         }
-
-
-/* This is for displaying the reults in the GUI - ignore for now.
-   String[] columns = new String[] {
-   "ISBN_ID", "TITLE", "AUTHOR", "LIBRARY_ID"
-   };
-
-   table = new JTable(data, columns);
-   tableContainer = new JScrollPane(table);
-   panel.add(tableContainer, BorderLayout.CENTER);
-
-
-   f.add(panel);
-   f.pack(); // Some fields of table get truncated - not sure why.
-   //f.setSize(600,400);
-   f.setVisible(true);
-*/
  }
 }

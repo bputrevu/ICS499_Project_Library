@@ -13,7 +13,7 @@
 
 
  /*
-  * Last update: 4-2-2018
+  * Last update: 4-3-2018
   */
 
 import java.awt.*;
@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 public class LibraryMenu implements Runnable, ActionListener
 {
     JMenu libraryMenu, adminMenu, memberMenu;
-    JMenuItem addUser, addBook, displayBooksOutTable, displayHOURSTable, displayUserTable, searchCatalogue, checkOutBook, returnBook, displayUserDoc, listAllTitles;
+    JMenuItem addUser, addBook, displayBooksOutTable, displayHOURSTable, displayUserTable, searchCatalogue, checkOutBook, returnBook, displayUserDoc, listAllTitles, SystemImgDoc;
     JPanel panel;
     JScrollPane tableContainer;
     JTable table, hoursTable;
@@ -49,6 +49,7 @@ public class LibraryMenu implements Runnable, ActionListener
         JMenuItem displayBooksOutTable = new JMenuItem("Display books checked out *");
         JMenuItem displayHOURSTable = new JMenuItem("Display HOURS table *");
         JMenuItem displayUserTable = new JMenuItem("Display USER table *");
+        JMenuItem SystemImgDoc = new JMenuItem("System Implementation Doc *");
 
         //JMenuItem login = new JMenuItem("Login");
         JMenuItem searchCatalogue = new JMenuItem("Search Catalog *");
@@ -63,6 +64,7 @@ public class LibraryMenu implements Runnable, ActionListener
         adminMenu.add(displayBooksOutTable);
         adminMenu.add(displayHOURSTable);
         adminMenu.add(displayUserTable);
+        adminMenu.add(SystemImgDoc);
 
         //memberMenu.add(login);
         memberMenu.add(searchCatalogue);
@@ -95,6 +97,9 @@ public class LibraryMenu implements Runnable, ActionListener
 
         event_listAllTitles e8 = new event_listAllTitles();
         listAllTitles.addActionListener(e8);
+
+        event_SystemImgDoc e9 = new event_SystemImgDoc();
+        SystemImgDoc.addActionListener(e9);
 
         panel = new JPanel(); //me
 
@@ -185,6 +190,13 @@ public class LibraryMenu implements Runnable, ActionListener
         public void actionPerformed(ActionEvent e8) {
            System.out.println("listAllTitles");
        puTitles checkBook = new puTitles();
+        }
+    }
+
+    public class event_SystemImgDoc implements ActionListener {
+        public void actionPerformed(ActionEvent e9) {
+           System.out.println("puSystemImgDoc");
+       puSystemImgDoc sysDoc = new puSystemImgDoc();
         }
     }
 
