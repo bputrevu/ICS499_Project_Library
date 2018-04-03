@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 public class LibraryMenu implements Runnable, ActionListener
 {
     JMenu libraryMenu, adminMenu, memberMenu;
-    JMenuItem addUser, addBook, displayBooksTable, displayHOURSTable, displayUserTable, searchCatalogue, checkOutBook, returnBook, displayUserDoc;
+    JMenuItem addUser, addBook, displayBooksOutTable, displayHOURSTable, displayUserTable, searchCatalogue, checkOutBook, returnBook, displayUserDoc, listAllTitles;
     JPanel panel;
     JScrollPane tableContainer;
     JTable table, hoursTable;
@@ -46,32 +46,34 @@ public class LibraryMenu implements Runnable, ActionListener
 
         JMenuItem addUser =new JMenuItem("Add new user *");
         JMenuItem addBook = new JMenuItem("Add a book");
-        JMenuItem displayBooksTable = new JMenuItem("Display BOOKS table *");
+        JMenuItem displayBooksOutTable = new JMenuItem("Display books checked out *");
         JMenuItem displayHOURSTable = new JMenuItem("Display HOURS table *");
         JMenuItem displayUserTable = new JMenuItem("Display USER table *");
 
         //JMenuItem login = new JMenuItem("Login");
         JMenuItem searchCatalogue = new JMenuItem("Search Catalog *");
-        JMenuItem checkOutBook = new JMenuItem("Check out a book");
+        JMenuItem listAllTitles = new JMenuItem("List all titles *");
+        JMenuItem checkOutBook = new JMenuItem("Check out a book *");
         JMenuItem returnBook = new JMenuItem("Return a book");
         JMenuItem hold = new JMenuItem("Place a Hold");
         JMenuItem displayUserDoc = new JMenuItem("Documentation *");
 
         adminMenu.add(addUser);
         adminMenu.add(addBook);
-        adminMenu.add(displayBooksTable);
+        adminMenu.add(displayBooksOutTable);
         adminMenu.add(displayHOURSTable);
         adminMenu.add(displayUserTable);
 
         //memberMenu.add(login);
         memberMenu.add(searchCatalogue);
+        memberMenu.add(listAllTitles);
         memberMenu.add(checkOutBook);
         memberMenu.add(returnBook);
         memberMenu.add(hold);
         memberMenu.add(displayUserDoc);
 
-        event_displayBooksTable e1 = new event_displayBooksTable();
-        displayBooksTable.addActionListener(e1);
+        event_displayBooksOutTable e1 = new event_displayBooksOutTable();
+        displayBooksOutTable.addActionListener(e1);
 
         event_displayHOURSTable e2 = new event_displayHOURSTable();
         displayHOURSTable.addActionListener(e2);
@@ -90,6 +92,9 @@ public class LibraryMenu implements Runnable, ActionListener
 
         event_checkOutBook e7 = new event_checkOutBook();
         checkOutBook.addActionListener(e7);
+
+        event_listAllTitles e8 = new event_listAllTitles();
+        listAllTitles.addActionListener(e8);
 
         panel = new JPanel(); //me
 
@@ -119,12 +124,12 @@ public class LibraryMenu implements Runnable, ActionListener
 
     }
 
-    public class event_displayBooksTable implements ActionListener {
+    public class event_displayBooksOutTable implements ActionListener {
         public void actionPerformed(ActionEvent e1) {
-           System.out.println("event_displayBooksTable");
+           System.out.println("event_displayBooksOutTable");
            //JOptionPane.showMessageDialog(null, "event_displayBooksTable ");
 
-        puListBooks puList = new puListBooks();
+        puCheckedOut puList = new puCheckedOut();
         }
     }
 
@@ -132,7 +137,6 @@ public class LibraryMenu implements Runnable, ActionListener
         public void actionPerformed(ActionEvent e2) {
            System.out.println("event_displayHOURSTable");
            //JOptionPane.showMessageDialog(null, "event_displayHOURSTable ");
-           //
         puListHours puList = new puListHours();
         }
     }
@@ -174,6 +178,13 @@ public class LibraryMenu implements Runnable, ActionListener
         public void actionPerformed(ActionEvent e7) {
            System.out.println("checkOutBook");
        puCheckBook checkBook = new puCheckBook();
+        }
+    }
+
+    public class event_listAllTitles implements ActionListener {
+        public void actionPerformed(ActionEvent e8) {
+           System.out.println("listAllTitles");
+       puTitles checkBook = new puTitles();
         }
     }
 
