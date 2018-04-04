@@ -75,7 +75,7 @@ is a library checkout system.Bhavani and I outlined and submitted on 1/9/2018
 to Ryan the entities we thought were relevant to our implementation.Book
 (title, author, ISBN, type, description), location
 (name, address, hours), user (name,
-address, library id), book_status
+address, library bookId), book_status
 (hold, location, check-in/out).Other functions/entities/objects/attributes
 include: book_search, due_date, user_login, account_management, cancel_hold,
 book_inventory.We decided to exclude the library-employee

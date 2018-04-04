@@ -24,10 +24,22 @@ public class LibraryMenu implements Runnable, ActionListener
         memberMenu = new JMenu("Models.User Functions");
 
         JMenuItem addUser =new JMenuItem("Add new user");
+        addUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new  AddUserScreen().showAddUserScreen();
+            }
+        });
         JMenuItem addBook = new JMenuItem("Add a book");
+        addBook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new AddBookScreen().showAddBookScreen();
+            }
+        });
 
         JMenuItem login = new JMenuItem("Login");
-        JMenuItem searchCatalogue = new JMenuItem("Serach Catalogue");
+        JMenuItem searchCatalogue = new JMenuItem("Search Catalogue");
         JMenuItem checkOutBook = new JMenuItem("Check out a book");
         JMenuItem returnBook = new JMenuItem("Return a book");
         JMenuItem hold = new JMenuItem("Place a Hold");

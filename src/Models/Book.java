@@ -9,19 +9,21 @@ import java.time.LocalDate;
  */
 public class Book {
 
-    private String id;
+    private String bookId;
     private String title;
     private String author;
-    private LocalDate dueDate;
-    private User borrowdBy;
-    private List<Book> holds;
 
-    public String getId() {
-        return id;
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 
     public String getTitle() {
@@ -40,39 +42,12 @@ public class Book {
         this.author = author;
     }
 
-    public LocalDate getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public User getBorrowdBy() {
-        return borrowdBy;
-    }
-
-    public void setBorrowdBy(User borrowdBy) {
-        this.borrowdBy = borrowdBy;
-    }
-
-    public List<Book> getHolds() {
-        return holds;
-    }
-
-    public void setHolds(List<Book> holds) {
-        this.holds = holds;
-    }
-
     @Override
     public String toString() {
-        return "Models.Book{" +
-                "id='" + id + '\'' +
+        return "Book{" +
+                "bookId='" + bookId + '\'' +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", dueDate=" + dueDate +
-                ", borrowdBy=" + borrowdBy +
-                ", holds=" + holds +
                 '}';
     }
 }
