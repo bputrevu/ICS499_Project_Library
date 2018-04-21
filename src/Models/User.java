@@ -8,34 +8,68 @@ import java.util.List;
  * Created by Home on 1/22/18.
  */
 public class User {
-    private String id;
-    private String name;
-    private String address;
+    private String userId;
+    private String firstName;
+    private String lastName;
+    private String addressLine1;
+    private String addressLine2;
     private String phone;
-    private List<Book> booksOnHold;
 
-    public String getId() {
-        return id;
+    public User(String userId, String firstName, String lastName, String addressLine1, String addressLine2, String phone) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.phone = phone;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public User(String firstName, String lastName, String addressLine1, String addressLine2, String phone) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.phone = phone;
     }
 
-    public String getName() {
-        return name;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getAddress() {
-        return address;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAddressLine1() {
+        return addressLine1;
+    }
+
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
+    }
+
+    public String getAddressLine2() {
+        return addressLine2;
+    }
+
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
     }
 
     public String getPhone() {
@@ -44,24 +78,5 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public List<Book> getBooksOnHold() {
-        return booksOnHold;
-    }
-
-    public void setBooksOnHold(List<Book> booksOnHold) {
-        this.booksOnHold = booksOnHold;
-    }
-
-    @Override
-    public String toString() {
-        return "Models.User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", booksOnHold=" + booksOnHold +
-                '}';
     }
 }
