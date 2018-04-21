@@ -1,6 +1,7 @@
 /*
  * puLogin.java - Dialog box to login to the Metro Library application.
- * 3-30-2018
+ * 4-21-2018 - Modify to use session.java to track which user is logged in.
+ * 3-30-2018 - Original login program.
  */
 
  import javax.swing.JOptionPane;
@@ -32,8 +33,14 @@
         //Launch LibraryMenu (application) if valid account or else
         //Redirect user to login again.
         if (ID_database.equals(USER_ID) && PASS_database.equals(PASSWORD)){
+            // Save user ID in a session class.
+            //session trackID = new session();
+            //trackID.setID(USER_ID);
+
+            // Acknowledge successful login.
             JOptionPane.showMessageDialog(null, "Authenticated");
             LibraryMenu app = new LibraryMenu();
+            app.setID(USER_ID);
         } else {
             JOptionPane.showMessageDialog(null, "User ID or password is incorrect.");
             puLogin login = new puLogin();
