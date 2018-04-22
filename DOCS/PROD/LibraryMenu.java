@@ -13,7 +13,7 @@
 
 
  /*
-  * Last update: 4-3-2018
+  * Last update: 4-22-2018
   */
 
 import java.awt.*;
@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 public class LibraryMenu implements Runnable, ActionListener
 {
     JMenu libraryMenu, adminMenu, memberMenu;
-    JMenuItem addUser, addBook, displayBooksOutTable, displayHOURSTable, displayUserTable, searchCatalogue, checkOutBook, myCheckOutBook, returnBook, displayUserDoc, listAllTitles, SystemImgDoc;
+    JMenuItem addUser, addBook, displayBooksOutTable, displayHOURSTable, displayUserTable, searchCatalogue, checkOutBook, myCheckOutBook, logout, displayUserDoc, listAllTitles, SystemImgDoc;
     JPanel panel;
     JScrollPane tableContainer;
     JTable table, hoursTable;
@@ -55,11 +55,11 @@ public class LibraryMenu implements Runnable, ActionListener
 
         JMenuItem searchCatalogue = new JMenuItem("Search Catalog *");
         JMenuItem listAllTitles = new JMenuItem("List all titles *");
-        JMenuItem checkOutBook = new JMenuItem("Check out a book *");
-        JMenuItem returnBook = new JMenuItem("Return a book");
+        JMenuItem checkOutBook = new JMenuItem("Check-in or Check-out a book **");
         JMenuItem hold = new JMenuItem("Place a Hold");
         JMenuItem displayUserDoc = new JMenuItem("Documentation *");
-        JMenuItem myCheckOutBook = new JMenuItem("My Checked out Books ");
+        JMenuItem myCheckOutBook = new JMenuItem("My Checked out Books ** ");
+        JMenuItem logout = new JMenuItem("Logout of My Metro Library **");
 
         adminMenu.add(addUser);
         adminMenu.add(addBook);
@@ -72,9 +72,9 @@ public class LibraryMenu implements Runnable, ActionListener
         memberMenu.add(listAllTitles);
         memberMenu.add(myCheckOutBook);
         memberMenu.add(checkOutBook);
-        memberMenu.add(returnBook);
         memberMenu.add(hold);
         memberMenu.add(displayUserDoc);
+        memberMenu.add(logout);
 
         event_displayBooksOutTable e1 = new event_displayBooksOutTable();
         displayBooksOutTable.addActionListener(e1);
@@ -105,6 +105,9 @@ public class LibraryMenu implements Runnable, ActionListener
 
         event_myCheckOutBook e10 = new event_myCheckOutBook();
         myCheckOutBook.addActionListener(e10);
+
+        event_logout e11 = new event_logout();
+        logout.addActionListener(e11);
 
         panel = new JPanel(); //me
 
@@ -184,8 +187,9 @@ public class LibraryMenu implements Runnable, ActionListener
 
     public class event_checkOutBook implements ActionListener {
         public void actionPerformed(ActionEvent e7) {
-           System.out.println("checkOutBook");
-       puCheckBook checkBook = new puCheckBook();
+          System.out.println("checkOutBook");
+          System.out.printf("ID : %s \n",  myGetID);
+          puCheckBook checkBook = new puCheckBook(myGetID);
         }
     }
 
@@ -209,9 +213,17 @@ public class LibraryMenu implements Runnable, ActionListener
          //JOptionPane.showMessageDialog(null, "event_myCheckOutBook ");
          System.out.println("myCheckOutBook");
          System.out.printf("ID : %s \n",  myGetID);
-         //puMyCheckedOut puList = new puMyCheckedOut();
          puMyCheckedOut puList = new puMyCheckedOut(myGetID);
-         //puList.setID(myGetID);
+        }
+    }
+
+    public class event_logout implements ActionListener {
+        public void actionPerformed(ActionEvent e11) {
+         System.out.println("event_logout");
+         //JOptionPane.showMessageDialog(null, "event_logout ");
+         System.out.printf("ID : %s \n",  myGetID);
+         System.out.println("Exiting....");
+         System.exit(0);
         }
     }
 
