@@ -13,7 +13,7 @@
 
 
  /*
-  * Last update: 4-22-2018
+  * Last update: 4-27-2018
   */
 
 import java.awt.*;
@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 public class LibraryMenu implements Runnable, ActionListener
 {
     JMenu libraryMenu, adminMenu, memberMenu;
-    JMenuItem addUser, addBook, displayBooksOutTable, displayHOURSTable, displayUserTable, searchCatalogue, checkOutBook, myCheckOutBook, logout, displayUserDoc, listAllTitles, SystemImgDoc;
+    JMenuItem addUser, displayBooksOutTable, displayHOURSTable, displayUserTable, searchCatalogue, checkOutBook, myCheckOutBook, logout, displayUserDoc, listAllTitles, SystemImgDoc;
     JPanel panel;
     JScrollPane tableContainer;
     JTable table, hoursTable;
@@ -46,8 +46,7 @@ public class LibraryMenu implements Runnable, ActionListener
         adminMenu = new JMenu("Admin Functions");
         memberMenu = new JMenu("My Metro Library");
 
-        JMenuItem addUser =new JMenuItem("Add new user *");
-        JMenuItem addBook = new JMenuItem("Add a book");
+        JMenuItem addUser =new JMenuItem("Add new user **");
         JMenuItem displayBooksOutTable = new JMenuItem("Display books checked out *");
         JMenuItem displayHOURSTable = new JMenuItem("Display HOURS table *");
         JMenuItem displayUserTable = new JMenuItem("Display USER table *");
@@ -56,13 +55,11 @@ public class LibraryMenu implements Runnable, ActionListener
         JMenuItem searchCatalogue = new JMenuItem("Search Catalog *");
         JMenuItem listAllTitles = new JMenuItem("List all titles *");
         JMenuItem checkOutBook = new JMenuItem("Check-in or Check-out a book **");
-        JMenuItem hold = new JMenuItem("Place a Hold");
         JMenuItem displayUserDoc = new JMenuItem("Documentation *");
         JMenuItem myCheckOutBook = new JMenuItem("My Checked out Books ** ");
         JMenuItem logout = new JMenuItem("Logout of My Metro Library **");
 
         adminMenu.add(addUser);
-        adminMenu.add(addBook);
         adminMenu.add(displayBooksOutTable);
         adminMenu.add(displayHOURSTable);
         adminMenu.add(displayUserTable);
@@ -72,7 +69,6 @@ public class LibraryMenu implements Runnable, ActionListener
         memberMenu.add(listAllTitles);
         memberMenu.add(myCheckOutBook);
         memberMenu.add(checkOutBook);
-        memberMenu.add(hold);
         memberMenu.add(displayUserDoc);
         memberMenu.add(logout);
 
