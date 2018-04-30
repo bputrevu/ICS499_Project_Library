@@ -1,6 +1,6 @@
 /*
  * puReturnBook.java - Uses a dialog box to return a checked-out book.
- * 4-22-2018
+ * Last update: 4-30-2018
  */
 
  import javax.swing.JOptionPane;
@@ -147,8 +147,6 @@ try {
       // delete from ManageBook where BORROWED_USER_ID = 'user01' and ISBN_ID = '0375861254';
 
       SQL = "delete from ManageBook where BORROWED_USER_ID = ? and ISBN_ID = ?";
-      //SQL_A = "%" + userAcct + "%";
-      //SQL_B = "%" + ISBN_ID + "%";
       SQL_A = userAcct;
       SQL_B = ISBN_ID;
 
@@ -158,12 +156,17 @@ try {
       System.out.printf("SQL is: %s . \n", SQL);
       System.out.printf("SQL_A is: %s . \n", SQL_A);
       System.out.printf("SQL_B is: %s . \n", SQL_B);
-      stmt.executeUpdate();
+      //stmt.executeUpdate();
+      int result = stmt.executeUpdate();
 
-      System.out.println("Row deleted.... ");
-
-        // Finally return the results of the checkin status in a dialog box.
-        JOptionPane.showMessageDialog(null, "Checkin completed successfully. \nTitle : " +  TITLE + "\nAuthor : " + AUTHOR + "\nAcoount : " + userAcct + "\n"  );
+      // If no rows were affected than the book was not checked in.
+      if (result == 0) {
+         System.out.println("Book not checked-in (title or user permission issue...... ");
+         JOptionPane.showMessageDialog(null, " Book not checked-in.\n Either the title is incorrect or you do not have permissions to perform this action." );
+      } else {
+         System.out.println("Row deleted.... ");
+         JOptionPane.showMessageDialog(null, "Checkin completed successfully. \nTitle : " +  TITLE + "\nAuthor : " + AUTHOR + "\nAcoount : " + userAcct + "\n"  );
+      }
 
       } catch (Exception e) {
               e.printStackTrace();
@@ -174,8 +177,6 @@ try {
               try { if (stmt1 != null) stmt1.close(); } catch (SQLException e) { e.printStackTrace(); }
               try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
       }
-        // Finally return the results of the checkout status in a dialog box.
-        //JOptionPane.showMessageDialog(null, "Checkout completed successfully. \nTitle : " +  TITLE + "\nAuthor : " + AUTHOR + "\nAcoount : " + userAcct + "\nDue : " + DUE_DATE );
 
         // The book is not checked out.Return that information and relaunch the dialog box.
         } else {

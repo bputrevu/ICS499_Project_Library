@@ -1,6 +1,6 @@
 /*
  * puAddUser.java - GUI to collect information to add a user to MariaDB.
- * 4-27-2018
+ * Last Update4-30-2018
  */
 
  import javax.swing.JOptionPane;
@@ -26,8 +26,6 @@
      JTextField field6 = new JTextField();
      JPasswordField field7 = new JPasswordField(15);
      JPasswordField field8 = new JPasswordField(15);
-     //JTextField field7 = new JTextField();
-     //JTextField field8 = new JTextField();
      Object[] message = {
          "USER_ID    ", field1,
          "PASS_1    ", field7,
@@ -41,9 +39,7 @@
      int option = JOptionPane.showConfirmDialog(null, message, "Metro Library", JOptionPane.OK_CANCEL_OPTION);
      if (option == JOptionPane.OK_OPTION)
      {
-         //USER_ID  = Integer.parseInt(field1.getText());
          USER_ID  = field1.getText();
-         //CARD_ID  = Integer.parseInt(field2.getText());
          CARD_ID  = field2.getText();
          LAST_NAME = field3.getText();
          FIRST_NAME = field4.getText();
@@ -56,19 +52,14 @@
         //Check that both password fields match. If they do, ok to add information, if they don't send an error message to have them reenter password.
         if (PASS_1.equals(PASS_2)){
             System.out.printf("puAddUser: PASS_1 equals PASS_2, calling AddUser. )  %s \n",  PASS_1);
-            //JOptionPane.showMessageDialog(null, "Authenticated");
-             AddUser add = new AddUser();
-             add.insertUser(USER_ID,CARD_ID,LAST_NAME,FIRST_NAME,ADDRESS,PHONE,PASS_1);
+            AddUser add = new AddUser();
+            add.insertUser(USER_ID,CARD_ID,LAST_NAME,FIRST_NAME,ADDRESS,PHONE,PASS_1);
+            JOptionPane.showMessageDialog(null, "You Entered \nUSER_ID:  " + USER_ID + "\nCARD_ID:  "+ CARD_ID +"\nCARD_ID:  "+ LAST_NAME +"\nFIRST_NAME:  "+ FIRST_NAME +"\nADDRESS:  "+ ADDRESS +"\nPHONE:  "+ PHONE );
         } else {
-            JOptionPane.showMessageDialog(null, "Passwords do not match! Please re-enter passwords and submit.");
+            JOptionPane.showMessageDialog(null, "Passwords do not match! Please try again.");
             System.out.printf("puAddUser: PASS_1 does not equal PASS_2. PASS_1 %s, PASS_2 %s \n",  PASS_1, PASS_2);
-            //puLogin login = new puLogin();
+            puAddUser puAdd = new puAddUser();
           }
-
-        //AddUser add = new AddUser();
-        //add.insertUser(USER_ID,CARD_ID,LAST_NAME,FIRST_NAME,ADDRESS,PHONE,PASS_1);
-
-        JOptionPane.showMessageDialog(null, "You Entered \nUSER_ID:  " + USER_ID + "\nCARD_ID:  "+ CARD_ID +"\nCARD_ID:  "+ LAST_NAME +"\nFIRST_NAME:  "+ FIRST_NAME +"\nADDRESS:  "+ ADDRESS +"\nPHONE:  "+ PHONE );
-     }
-   }
+       }
+    }
  }
