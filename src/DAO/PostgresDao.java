@@ -1,10 +1,7 @@
 package DAO;
 
 import Models.*;
-import UI.HoldBook;
-import UI.LoanBooks;
-import UI.RenewBook;
-import UI.ReturnBook;
+import UI.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -280,6 +277,11 @@ public class PostgresDao {
 
     }
 
+    public void testRemoveHoldBook() {
+        BookHold bookHold = new BookHold(7,1);
+        RemoveHold removeHold = new RemoveHold(bookHold);
+    }
+
     public static void main(String args[]) {
         PostgresDao pgDao = new PostgresDao();
         //pgDao.testSelectUser(pgDao);
@@ -291,7 +293,9 @@ public class PostgresDao {
 
         //pgDao.testRenewBook();
 
-        pgDao.testHoldBook();
+        //pgDao.testHoldBook();
+
+        pgDao.testRemoveHoldBook();
 
     }
 }
