@@ -40,8 +40,8 @@ public class AddUserScreen extends JFrame {
         add(submitButton);
         JButton cancelButton = new JButton("Cancel");
         add(cancelButton);
-        JButton returnButton = new JButton("Return");
-        add(returnButton);
+//        JButton returnButton = new JButton("Return");
+//        add(returnButton);
 
         submitButton.addActionListener(new ActionListener() {
             @Override

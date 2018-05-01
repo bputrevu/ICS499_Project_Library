@@ -5,6 +5,7 @@ import Models.BookLoan;
 import Models.BookLoanList;
 import Models.User;
 import UI.LoanBooks;
+import UI.RenewBook;
 import UI.ReturnBook;
 
 import java.sql.Connection;
@@ -263,6 +264,17 @@ public class PostgresDao {
         returnBook.deleteBookLoan(bookLoan2);
     }
 
+    public void testRenewBook() {
+        BookLoan bookLoan1 = new BookLoan(7,1, LocalDate.now().minusDays(30),LocalDate.now().minusDays(9),0);
+//        BookLoanList bookLoanList = new BookLoanList();
+//        bookLoanList.addBookToList(bookLoan1);
+//        LoanBooks loanBooks = new LoanBooks();
+//        loanBooks.insertBookLoan(bookLoanList);
+
+        RenewBook renewBook = new RenewBook(bookLoan1);
+
+    }
+
     public static void main(String args[]) {
         PostgresDao pgDao = new PostgresDao();
         //pgDao.testSelectUser(pgDao);
@@ -270,7 +282,9 @@ public class PostgresDao {
 
         //pgDao.testInsertBookLoan();
         //pgDao.testReturnBook();
-        pgDao.testReturnBookWithPenalty();
+        //pgDao.testReturnBookWithPenalty();
+
+        pgDao.testRenewBook();
 
     }
 }
