@@ -36,6 +36,7 @@ public class ReturnBook {
         pgDao.closeDbConnection();
 
         createBookReturnTransaction(bookLoan.getUserId(),bookLoan.getBookId());
+        checkForPenalty(bookLoan);
     }
 
 
@@ -49,5 +50,9 @@ public class ReturnBook {
         Transaction transaction = new Transaction(LocalDate.now(), userId, "Penalty", bookId);
         CreateTransaction createTransaction = new CreateTransaction(transaction);
 
+    }
+
+    public void checkForPenalty(BookLoan bookLoan) {
+        AddPenalty addPenalty = new AddPenalty(bookLoan);
     }
 }

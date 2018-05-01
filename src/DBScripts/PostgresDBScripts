@@ -7,9 +7,11 @@ create table library.user(
   "address_line1" varchar(18) not null,
   "address_line2" varchar(18) not null,
   "phone" varchar(12) not null,
+  "outstanding_penalty_fees" decimal(5,2) not null,
   constraint "user_key" primary key ("user_id")
 )
 with (oids=false)
+
 
 
 create table library.book(

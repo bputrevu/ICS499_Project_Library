@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Iterator;
 import java.util.ListIterator;
 
@@ -87,6 +90,17 @@ public class PostgresDao {
         System.out.println("Records deleted successfully");
     }
 
+    public void updateRow(String sql) {
+        try {
+            stmt.executeUpdate(sql);
+
+        } catch (Exception e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Records deleted successfully");
+    }
+
     public ResultSet selectQuery(String sql) {
         try {
             rs = stmt.executeQuery(sql);
@@ -105,7 +119,8 @@ public class PostgresDao {
                 + "last_name,"
                 + "address_line1,"
                 + "address_line2,"
-                + "phone"
+                + "phone,"
+                + "outstanding_penalty_fees"
                 + ")"
                 + " values ("
                 +"'"
@@ -118,6 +133,8 @@ public class PostgresDao {
                 +user.getAddressLine2()
                 + "','"
                 +user.getPhone()
+                + "','"
+                +user.getOutstandingPenaltyFees()
                 + "')";
 
         System.out.println("Sql:" + sql);
@@ -232,14 +249,28 @@ public class PostgresDao {
         returnBook.deleteBookLoan(bookLoan2);
     }
 
+    public void testReturnBookWithPenalty() {
+        BookLoan bookLoan1 = new BookLoan(7,1, LocalDate.now().minusDays(30),LocalDate.now().minusDays(9),0);
+        BookLoan bookLoan2 = new BookLoan(8,1, LocalDate.now().minusDays(30),LocalDate.now().minusDays(9),0);
+        BookLoanList bookLoanList = new BookLoanList();
+        bookLoanList.addBookToList(bookLoan1);
+        bookLoanList.addBookToList(bookLoan2);
+        LoanBooks loanBooks = new LoanBooks();
+        loanBooks.insertBookLoan(bookLoanList);
+
+        ReturnBook returnBook = new ReturnBook();
+        returnBook.deleteBookLoan(bookLoan1);
+        returnBook.deleteBookLoan(bookLoan2);
+    }
+
     public static void main(String args[]) {
         PostgresDao pgDao = new PostgresDao();
         //pgDao.testSelectUser(pgDao);
         //pgDao.testInsertUser(pgDao);
 
         //pgDao.testInsertBookLoan();
-        pgDao.testReturnBook();
-
+        //pgDao.testReturnBook();
+        pgDao.testReturnBookWithPenalty();
 
     }
 }

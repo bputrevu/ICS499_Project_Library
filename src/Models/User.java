@@ -14,6 +14,7 @@ public class User {
     private String addressLine1;
     private String addressLine2;
     private String phone;
+    private double outstandingPenaltyFees;
 
     public User(String userId, String firstName, String lastName, String addressLine1, String addressLine2, String phone) {
         this.userId = userId;
@@ -22,6 +23,7 @@ public class User {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.phone = phone;
+        this.outstandingPenaltyFees = 0;
     }
 
     public User(String firstName, String lastName, String addressLine1, String addressLine2, String phone) {
@@ -78,5 +80,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public double getOutstandingPenaltyFees() {
+        return outstandingPenaltyFees;
+    }
+
+    public void setOutstandingPenaltyFees(double outstandingPenaltyFees) {
+        this.outstandingPenaltyFees = outstandingPenaltyFees;
     }
 }

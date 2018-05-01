@@ -21,6 +21,14 @@ public class BookLoan {
         this.renewalCount = 0;
     }
 
+    public BookLoan(int bookId, int userId, LocalDate loanDate, LocalDate expectedReturnDate, int renewalCount) {
+        this.bookId = bookId;
+        this.userId = userId;
+        this.loanDate = loanDate;
+        this.expectedReturnDate = expectedReturnDate;
+        this.renewalCount = renewalCount;
+    }
+
     public int getBookId() {
         return bookId;
     }
