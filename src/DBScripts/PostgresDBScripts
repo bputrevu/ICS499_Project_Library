@@ -34,4 +34,14 @@ with (oids=false)
 CREATE UNIQUE INDEX book_idx
     ON library.bookLoan ("book_id")
 
+create table library.transactions(
+    "transaction_id" serial,
+	"transaction_date" date not null,
+	"user_id" integer not null,
+	"transaction_type" varchar(18) not null,
+	"book_id" integer not null,
+	constraint "transactions_key" primary key ("transaction_id")
+)
+with (oids=false)
+
 

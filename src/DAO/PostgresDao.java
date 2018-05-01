@@ -5,6 +5,7 @@ import Models.BookLoan;
 import Models.BookLoanList;
 import Models.User;
 import UI.LoanBooks;
+import UI.ReturnBook;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -73,6 +74,17 @@ public class PostgresDao {
             System.exit(0);
         }
         System.out.println("Records created successfully");
+    }
+
+    public void deleteRow(String sql) {
+        try {
+            stmt.executeUpdate(sql);
+
+        } catch (Exception e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Records deleted successfully");
     }
 
     public ResultSet selectQuery(String sql) {
@@ -201,14 +213,6 @@ public class PostgresDao {
     }
 
     public void testInsertBookLoan(){
-
-    }
-
-    public static void main(String args[]) {
-        PostgresDao pgDao = new PostgresDao();
-        pgDao.testSelectUser(pgDao);
-        //pgDao.testInsertUser(pgDao);
-
         BookLoanList bookLoanList = new BookLoanList();
         BookLoan bookLoan1 = new BookLoan(5,1);
         BookLoan bookLoan2 = new BookLoan(6,1);
@@ -217,6 +221,25 @@ public class PostgresDao {
 
         LoanBooks loanBooks = new LoanBooks();
         loanBooks.insertBookLoan(bookLoanList);
+
+    }
+
+    public void testReturnBook() {
+        BookLoan bookLoan1 = new BookLoan(5,1);
+        BookLoan bookLoan2 = new BookLoan(6,1);
+        ReturnBook returnBook = new ReturnBook();
+        returnBook.deleteBookLoan(bookLoan1);
+        returnBook.deleteBookLoan(bookLoan2);
+    }
+
+    public static void main(String args[]) {
+        PostgresDao pgDao = new PostgresDao();
+        //pgDao.testSelectUser(pgDao);
+        //pgDao.testInsertUser(pgDao);
+
+        //pgDao.testInsertBookLoan();
+        pgDao.testReturnBook();
+
 
     }
 }
