@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 public class AddUserScreen extends JFrame {
     public AddUserScreen() {
         //setLayout(new FlowLayout(FlowLayout.LEFT,10,20));
-        setLayout(new GridLayout(6,2,3,3));
+        setLayout(new GridLayout(6,3,3,3));
 
         add(new JLabel("First Name"));
         JTextField firstNameTextField = new JTextField(18);
@@ -40,6 +40,8 @@ public class AddUserScreen extends JFrame {
         add(submitButton);
         JButton cancelButton = new JButton("Cancel");
         add(cancelButton);
+        JButton returnButton = new JButton("Return");
+        add(returnButton);
 
         submitButton.addActionListener(new ActionListener() {
             @Override

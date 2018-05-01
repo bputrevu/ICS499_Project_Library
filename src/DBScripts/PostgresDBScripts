@@ -19,3 +19,19 @@ create table library.book(
   constraint "book_key" primary key ("book_id")
 )
 with (oids=false)
+
+
+create table library.bookLoan(
+  "book_id" integer not null,
+  "user_id" integer not null,
+  "loaned_date" date not null,
+  "expected_return_date" date not null,
+  "renewal_count" integer not null,
+  constraint "bookLoan_key" primary key ("book_id", "user_id")
+)
+with (oids=false)
+
+CREATE UNIQUE INDEX book_idx
+    ON library.bookLoan ("book_id")
+
+

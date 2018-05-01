@@ -1,12 +1,16 @@
 package DAO;
 
 import Models.Book;
+import Models.BookLoan;
+import Models.BookLoanList;
 import Models.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Iterator;
+import java.util.ListIterator;
 
 /**
  * Created by Home on 4/3/18.
@@ -127,11 +131,40 @@ public class PostgresDao {
         closeDbConnection();
     }
 
+    public void insertBookLoan(BookLoanList bookLoanList) {
+        ListIterator<BookLoan> listIter = bookLoanList.getBookLoanListIterator();
+        while (listIter.hasNext()) {
+            BookLoan bookLoan = listIter.next();
+            String sql = "insert into library.bookloan("
+                    + "book_id,"
+                    + "user_id,"
+                    + "loaned_date,"
+                    + "expected_return_date,"
+                    + "renewal_count"
+                    + ")"
+                    + " values ("
+                    +"'"
+                    + bookLoan.getBookId()
+                    + "','"
+                    +bookLoan.getUserId()
+                    + "','"
+                    +bookLoan.getLoanDate()
+                    + "','"
+                    +bookLoan.getExpectedReturnDate()
+                    + "','"
+                    +bookLoan.getRenewalCount()
+                    + "')";
+            System.out.println("Sql:" + sql);
+            openDbConnection();
+            insertRow(sql);
+            closeDbConnection();
+        }
+    }
 
-    public static void main(String args[]) {
-        PostgresDao pgDao = new PostgresDao();
+
+    public void testInsertUser(PostgresDao pgDao){
+
         pgDao.openDbConnection();
-
         String sql = "insert into library.user("
                 + "first_name,"
                 + "last_name,"
@@ -148,8 +181,12 @@ public class PostgresDao {
                 + ")";
 
         System.out.println("Sql:" + sql);
-
         pgDao.insertRow(sql);
+    }
+
+    public void testSelectUser(PostgresDao pgDao) {
+
+        pgDao.openDbConnection();
 
         String sql1 = "Select "
                 + "user_id, "
@@ -159,7 +196,7 @@ public class PostgresDao {
                 + "address_line2, "
                 + "phone "
                 + "from  library.user "
-                + "where phone = '651-442-5361'"
+             //   + "where phone = '651-442-5361'"
                 ;
         System.out.println("Sql1:" + sql1);
 
@@ -190,5 +227,27 @@ public class PostgresDao {
             System.exit(0);
         }
         pgDao.closeDbConnection();
+    }
+
+    public void testInsertBookLoan(){
+
+    }
+
+    public static void main(String args[]) {
+        PostgresDao pgDao = new PostgresDao();
+        pgDao.testSelectUser(pgDao);
+        //pgDao.testInsertUser(pgDao);
+
+        BookLoanList bookLoanList = new BookLoanList();
+        BookLoan bookLoan1 = new BookLoan(1,1);
+        BookLoan bookLoan2 = new BookLoan(2,1);
+        bookLoanList.addBookToList(bookLoan1);
+        bookLoanList.addBookToList(bookLoan2);
+
+        ListIterator<BookLoan> listIter = bookLoanList.getBookLoanListIterator();
+        while (listIter.hasNext()) {
+            System.out.println(listIter.next().toString());
+        }
+        pgDao.insertBookLoan(bookLoanList);
     }
 }
