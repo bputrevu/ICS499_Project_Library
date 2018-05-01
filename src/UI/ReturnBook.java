@@ -10,13 +10,12 @@ import java.time.LocalDate;
 import java.util.ListIterator;
 
 /**
- * Created by Home on 4/30/18.
+ * Created by Home on 5/1/18.
  */
-public class LoanBooks {
+public class ReturnBook {
     private PostgresDao pgDao;
-    private final int maxAllowedLoanedBooks = 5;
 
-    public LoanBooks() {
+    public ReturnBook() {
         this.pgDao  = new PostgresDao();
     }
 
@@ -31,7 +30,7 @@ public class LoanBooks {
                 gotLoanedBookCount = true;
             }
             totalLoanedBooks++;
-            if (totalLoanedBooks <= maxAllowedLoanedBooks) {
+
                 String sql = "insert into library.bookloan("
                         + "book_id,"
                         + "user_id,"
@@ -55,11 +54,8 @@ public class LoanBooks {
 
                 pgDao.openDbConnection();
                 pgDao.insertRow(sql);
-                createBookLoanTransaction(bookLoan.getUserId(), bookLoan.getBookId());
                 pgDao.closeDbConnection();
-            } else {
-                System.out.println("User has already loaned max allowed books. Cannot loan anymore");
-            }
+
         }
     }
 
@@ -85,10 +81,9 @@ public class LoanBooks {
         return loanedBookCount;
     }
 
-    public void createBookLoanTransaction(int userId, int bookId) {
-        Transaction transaction = new Transaction(LocalDate.now(), userId, "Loaned", bookId);
+    public void createBookReturnTransaction(int userId, int bookId) {
+        Transaction transaction = new Transaction(LocalDate.now(), userId, "Returned", bookId);
         CreateTransaction createTransaction = new CreateTransaction(transaction);
 
     }
-
 }
