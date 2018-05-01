@@ -47,3 +47,15 @@ create table library.transactions(
 with (oids=false)
 
 
+create table library.bookHold(
+  "book_id" integer not null,
+  "user_id" integer not null,
+  "hold_create_date" date not null,
+  "held_until_date"  date,
+  constraint "bookHold_key" primary key ("book_id", "user_id")
+)
+with (oids=false)
+
+
+
+

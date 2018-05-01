@@ -1,9 +1,7 @@
 package DAO;
 
-import Models.Book;
-import Models.BookLoan;
-import Models.BookLoanList;
-import Models.User;
+import Models.*;
+import UI.HoldBook;
 import UI.LoanBooks;
 import UI.RenewBook;
 import UI.ReturnBook;
@@ -275,6 +273,13 @@ public class PostgresDao {
 
     }
 
+
+    public void testHoldBook() {
+        BookHold bookHold = new BookHold(7,1);
+        HoldBook holdBook = new HoldBook(bookHold);
+
+    }
+
     public static void main(String args[]) {
         PostgresDao pgDao = new PostgresDao();
         //pgDao.testSelectUser(pgDao);
@@ -284,7 +289,9 @@ public class PostgresDao {
         //pgDao.testReturnBook();
         //pgDao.testReturnBookWithPenalty();
 
-        pgDao.testRenewBook();
+        //pgDao.testRenewBook();
+
+        pgDao.testHoldBook();
 
     }
 }
