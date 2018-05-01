@@ -4,6 +4,7 @@ import Models.Book;
 import Models.BookLoan;
 import Models.BookLoanList;
 import Models.User;
+import UI.LoanBooks;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -131,36 +132,6 @@ public class PostgresDao {
         closeDbConnection();
     }
 
-    public void insertBookLoan(BookLoanList bookLoanList) {
-        ListIterator<BookLoan> listIter = bookLoanList.getBookLoanListIterator();
-        while (listIter.hasNext()) {
-            BookLoan bookLoan = listIter.next();
-            String sql = "insert into library.bookloan("
-                    + "book_id,"
-                    + "user_id,"
-                    + "loaned_date,"
-                    + "expected_return_date,"
-                    + "renewal_count"
-                    + ")"
-                    + " values ("
-                    +"'"
-                    + bookLoan.getBookId()
-                    + "','"
-                    +bookLoan.getUserId()
-                    + "','"
-                    +bookLoan.getLoanDate()
-                    + "','"
-                    +bookLoan.getExpectedReturnDate()
-                    + "','"
-                    +bookLoan.getRenewalCount()
-                    + "')";
-            System.out.println("Sql:" + sql);
-            openDbConnection();
-            insertRow(sql);
-            closeDbConnection();
-        }
-    }
-
 
     public void testInsertUser(PostgresDao pgDao){
 
@@ -239,15 +210,13 @@ public class PostgresDao {
         //pgDao.testInsertUser(pgDao);
 
         BookLoanList bookLoanList = new BookLoanList();
-        BookLoan bookLoan1 = new BookLoan(1,1);
-        BookLoan bookLoan2 = new BookLoan(2,1);
+        BookLoan bookLoan1 = new BookLoan(5,1);
+        BookLoan bookLoan2 = new BookLoan(6,1);
         bookLoanList.addBookToList(bookLoan1);
         bookLoanList.addBookToList(bookLoan2);
 
-        ListIterator<BookLoan> listIter = bookLoanList.getBookLoanListIterator();
-        while (listIter.hasNext()) {
-            System.out.println(listIter.next().toString());
-        }
-        pgDao.insertBookLoan(bookLoanList);
+        LoanBooks loanBooks = new LoanBooks();
+        loanBooks.insertBookLoan(bookLoanList);
+
     }
 }
