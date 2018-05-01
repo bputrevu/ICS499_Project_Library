@@ -1,7 +1,7 @@
 /*
  * puCheckBook.java is the pop-up GUI to allow users to check-in or check-out books.
  * check-out works, check-in has not been developed yet.
- * 4-3-2018
+ * 4-22-2018
  */
 import javax.swing.*;
 import java.awt.event.*;
@@ -9,8 +9,10 @@ class puCheckBook extends JFrame implements ActionListener{
   JRadioButton CheckIn, CheckOut;
   JButton b;
   JTextField searchField;
+  String myGetID;
 
-  puCheckBook(){
+  puCheckBook(String account){
+    myGetID = account;
     searchField = new JTextField();
     searchField.setBounds(100,100,100,30);
 
@@ -40,13 +42,11 @@ class puCheckBook extends JFrame implements ActionListener{
 
   public void actionPerformed(ActionEvent e){
     if(CheckIn.isSelected()){
-      JOptionPane.showMessageDialog(this,"The check-in feature is not yet available.");
+      //JOptionPane.showMessageDialog(this,"The check-in feature is not yet available.");
       String Title = searchField.getText();
       String SELECTION = "CheckIn";
-      //puCheckResults ci = new puCheckResults();
-      // Need to somehow pass a user ID
-      //       String UID = "user01";
-      //ci.checkBookIn(Title, SELECTION, UID);
+      puReturnBook ci = new puReturnBook();
+      ci.checkBookIn(Title, SELECTION, myGetID);
     }
 
     if(CheckOut.isSelected()){
@@ -54,9 +54,8 @@ class puCheckBook extends JFrame implements ActionListener{
       String Title = searchField.getText();
       String SELECTION = "CheckOut";
       puCheckResults co = new puCheckResults();
-      // Need to somehow pass a user ID
-      String UID = "user01";
-      co.checkBookOut(Title, SELECTION, UID);
+      System.out.printf("puCheckBook: ID : %s \n",  myGetID);
+      co.checkBookOut(Title, SELECTION, myGetID);
     }
   }
 }

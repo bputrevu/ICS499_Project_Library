@@ -1,7 +1,6 @@
 /*
- * puCheckResults.java - Uses a dialog box to display check-in/check-out results
- * with the MariaDB ManageBook table.
- * 4-22-2018
+ * puReturnBook.java - Uses a dialog box to return a checked-out book.
+ * Last update: 4-30-2018
  */
 
  import javax.swing.JOptionPane;
@@ -15,7 +14,7 @@
  import java.sql.PreparedStatement;
 
 
- public class puCheckResults {
+ public class puReturnBook {
  JPanel panel;
  JScrollPane tableContainer;
  JTable table;
@@ -32,19 +31,19 @@
   int count=999999;
   int numberOfRows=0;
 
-   public puCheckResults() {
+   public puReturnBook() {
 
 
 
-   System.out.println("puCheckResults called...");
+   System.out.println("puReturnBook called...");
    }
 
-        // Method called by puCheckBook.java to check-out a book
-        public void checkBookOut(String searchWord, String searchType, String UID) {
+        // Method called by puCheckBook.java to return a book
+        public void checkBookIn(String searchWord, String searchType, String UID) {
         String searchString = searchWord;
         String searchColumn = searchType;
         String userAcct = UID;
-        String sql, forSql, SQL;
+        String sql, forSql, SQL,SQL_A,SQL_B;
         String ISBN_ID  = "null";
         String TITLE  = "null";
         String AUTHOR  = "null";
@@ -79,7 +78,8 @@
           if (rs.next()) {
           // If rs.next() returns a result, it indicates a row has been matched
           // in SQL table ManageBook. This means the book is checked out.
-              System.out.printf("%s is checked out. \n", searchString);
+              System.out.printf("Verified %s is checked out. \n", searchString);
+              System.out.printf("OK to return %s. \n", searchString);
               bookStatus = "OUT";
           } else {
               System.out.printf("%s is NOT! checked out. \n", searchString);
@@ -92,8 +92,8 @@
 
      // Checking the book status again at this point is just a way to continue the book manage
      // process out side the SQL code that is doing the table lookup.
-        if (bookStatus.equals("IN")) {
-           System.out.printf("OK to check out the book now. \n");
+        if (bookStatus.equals("OUT")) {
+           System.out.printf("OK to RETURN the book now. \n");
         sql = "select ISBN_ID, TITLE, AUTHOR from BOOK where TITLE LIKE(?)";
         forSql = "%" + searchString + "%";
 
@@ -142,14 +142,31 @@ try {
       conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
 
       System.out.println("Try SQL update:");
-      stmt1 = conn.createStatement();
-      SQL = "insert into ManageBook(ISBN_ID, TITLE, AUTHOR, BORROWED_USER_ID, STATUS, DUE_DATE) values ('"+ISBN_ID+"', '"+TITLE+"', '"+AUTHOR+"', '"+userAcct+"', '"+STATUS+"','"+DUE_DATE+"')";
 
-      stmt1.executeUpdate(SQL);
-      System.out.println("Row inserted.... ");
+      // Here is where we want to delete the entry from the table
+      // delete from ManageBook where BORROWED_USER_ID = 'user01' and ISBN_ID = '0375861254';
 
-        // Finally return the results of the checkout status in a dialog box.
-        JOptionPane.showMessageDialog(null, "Checkout completed successfully. \nTitle : " +  TITLE + "\nAuthor : " + AUTHOR + "\nAcoount : " + userAcct + "\nDue : " + DUE_DATE );
+      SQL = "delete from ManageBook where BORROWED_USER_ID = ? and ISBN_ID = ?";
+      SQL_A = userAcct;
+      SQL_B = ISBN_ID;
+
+      stmt = conn.prepareStatement(SQL); //
+      stmt.setString(1, SQL_A);
+      stmt.setString(2, SQL_B);
+      System.out.printf("SQL is: %s . \n", SQL);
+      System.out.printf("SQL_A is: %s . \n", SQL_A);
+      System.out.printf("SQL_B is: %s . \n", SQL_B);
+      //stmt.executeUpdate();
+      int result = stmt.executeUpdate();
+
+      // If no rows were affected than the book was not checked in.
+      if (result == 0) {
+         System.out.println("Book not checked-in (title or user permission issue...... ");
+         JOptionPane.showMessageDialog(null, " Book not checked-in.\n Either the title is incorrect or you do not have permissions to perform this action." );
+      } else {
+         System.out.println("Row deleted.... ");
+         JOptionPane.showMessageDialog(null, "Checkin completed successfully. \nTitle : " +  TITLE + "\nAuthor : " + AUTHOR + "\nAcoount : " + userAcct + "\n"  );
+      }
 
       } catch (Exception e) {
               e.printStackTrace();
@@ -160,13 +177,11 @@ try {
               try { if (stmt1 != null) stmt1.close(); } catch (SQLException e) { e.printStackTrace(); }
               try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
       }
-        // Finally return the results of the checkout status in a dialog box.
-        //JOptionPane.showMessageDialog(null, "Checkout completed successfully. \nTitle : " +  TITLE + "\nAuthor : " + AUTHOR + "\nAcoount : " + userAcct + "\nDue : " + DUE_DATE );
 
-        // The book is checked out.Return that information and relaunch the checkout dialog box.
+        // The book is not checked out.Return that information and relaunch the dialog box.
         } else {
-          System.out.printf("The book is not available. \n");
-        JOptionPane.showMessageDialog(null, "The book you selected is not avaiable for check out. Please make another selection.");
+          System.out.printf("The book is not checked out. \n");
+        JOptionPane.showMessageDialog(null, "The book you selected for check-in is not listed as being checked out. Please check your selection and contact our support line if further assistance is needed.");
         }
  }
 }

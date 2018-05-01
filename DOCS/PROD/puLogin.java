@@ -1,6 +1,8 @@
 /*
  * puLogin.java - Dialog box to login to the Metro Library application.
- * 3-30-2018
+ * 4-23-2018 - Modify to use MariaDB AUTH table to authenticate.
+ * 4-21-2018 - Modify to use session.java to track which user is logged in.
+ * 3-30-2018 - Original login program.
  */
 
  import javax.swing.JOptionPane;
@@ -25,19 +27,37 @@
          String PASSWORD = new String(field2.getPassword());
 
          //Temporary until database is used to authenticate
-         String ID_database = "user01";
-         String PASS_database = "pass01";
+         //String ID_database = "user01";
+         //String PASS_database = "pass01";
 
-        //Authenticate.
-        //Launch LibraryMenu (application) if valid account or else
-        //Redirect user to login again.
-        if (ID_database.equals(USER_ID) && PASS_database.equals(PASSWORD)){
+         //database authentication
+         checkUser ID = new checkUser();
+         String ID_database = ID.verifyUser(USER_ID, PASSWORD);
+         System.out.printf("puLogin: ID.verifyUser(USER_ID, PASSWORD)  %s \n",  ID_database);
+         //if ID_database = FALSE --> no ID or incorrect ID
+
+        if (ID_database.equals("TRUE")){
             JOptionPane.showMessageDialog(null, "Authenticated");
             LibraryMenu app = new LibraryMenu();
+            app.setID(USER_ID);
         } else {
             JOptionPane.showMessageDialog(null, "User ID or password is incorrect.");
             puLogin login = new puLogin();
           }
+
+        //Authenticate.
+        //Launch LibraryMenu (application) if valid account or else
+        //Redirect user to login again.
+      /*
+        if (ID_database.equals(USER_ID) && PASS_database.equals(PASSWORD)){
+            JOptionPane.showMessageDialog(null, "Authenticated");
+            LibraryMenu app = new LibraryMenu();
+            app.setID(USER_ID);
+        } else {
+            JOptionPane.showMessageDialog(null, "User ID or password is incorrect.");
+            puLogin login = new puLogin();
+          }
+      */
      }
    }
  }
